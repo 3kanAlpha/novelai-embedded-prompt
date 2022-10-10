@@ -7,6 +7,7 @@ NovelAIで生成されたイラストのプロンプトとシードを画像に�
 現在PNG形式の画像のみ対応しています。
 
 ## Dependencies
+- [Pillow](https://pillow.readthedocs.io/en/stable/)
 - [PySimpleGUI](https://github.com/PySimpleGUI/PySimpleGUI) (for GUI)
 
 ## Usage
