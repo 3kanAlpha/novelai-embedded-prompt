@@ -1,1 +1,4 @@
 test.txt
+
+# Python Cache
+__pycache__/
