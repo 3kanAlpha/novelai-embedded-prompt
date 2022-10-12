@@ -2,4 +2,3 @@
 cls
 echo.
 python gui.py
-pause

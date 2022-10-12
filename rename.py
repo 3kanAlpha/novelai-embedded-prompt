@@ -1,18 +1,15 @@
 import os, glob, sys, re
 from PIL import Image
 from PIL.PngImagePlugin import PngInfo
+from termcolor import colored
 
-# ターミナル上でテキストの色を変える
-COLOR_YELLOW = "\033[33m"
-COLOR_RESET = "\033[0m"
-
-def rename(input_dir, name_prefix=""):
+def rename(input_dir, name_prefix="", start_num=0):
     print("Renaming files in directory: " + input_dir)
     
     files = glob.glob(os.path.join(input_dir, "*.png"))
     print("Found " + str(len(files)) + " file(s)")
     
-    image_id = 0
+    image_id = start_num
     for file in files:
         basename = os.path.basename(file)
         root, ext = os.path.splitext(basename)
@@ -29,7 +26,8 @@ def rename(input_dir, name_prefix=""):
         is_complete_prompt = prompt.endswith(", ")
         # print(is_complete_prompt)
         if not is_complete_prompt:
-            print("{}{}: The prompt was too long!{}".format(COLOR_YELLOW, image_id, COLOR_RESET))
+            msg = "{}: The prompt was too long!".format(image_id)
+            print(colored(msg, "yellow"))
         
         img = Image.open(file)
         metadata = PngInfo()
